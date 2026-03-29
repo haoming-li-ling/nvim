@@ -1,0 +1,107 @@
+-- local config = require("nvim-surround.config")
+-- require("nvim-surround").buffer_setup({
+--   aliases = {
+--     Y = { "1", "2" },
+--     f = { "b", "i", "s" },
+--     b = false,
+--   },
+--   surrounds = {
+--     f = false,
+--     ["1"] = {
+--       add = function()
+--         local result = config.get_input("command: ")
+--         if result then
+--           return { { "\\" .. result .. "{" }, { "}" } }
+--         end
+--       end,
+--       find = "\\.-%b{}",
+--       delete = "^(\\.-{)().-(})()$",
+--       change = {
+--         target = "^\\(.-)(){.-}()()$",
+--         replacement = function()
+--           local result = config.get_input("command: ")
+--           return { { result }, { "" } }
+--         end,
+--       },
+--     },
+--     ["2"] = {
+--       add = function()
+--         local result = config.get_input("command: ")
+--         if result then
+--           return { { "\\" .. result .. "{" }, { "}" } }
+--         end
+--       end,
+--       find = "\\.-%b[]%b{}",
+--       delete = "^(\\.-{)().-(})()$",
+--       change = {
+--         target = "^\\(.-)()%b[]%b{}()()$",
+--         replacement = function()
+--           local result = config.get_input("command: ")
+--           return { { result }, { "" } }
+--         end,
+--       },
+--     },
+--     E = {
+--       add = function()
+--         local result = config.get_input("environment: ")
+--         if result then
+--           return { { "\\begin{" .. result .. "}", "  " }, { "", "\\end{" .. result .. "}" } }
+--         end
+--       end,
+--       find = "\\begin{(.-)}.-\\end{%1}",
+--       delete = "^(\\begin{.-})().-(\\end{.-})()$",
+--       change = {
+--         target = "^\\begin{(.-)()}.-\\end{(.-)()}$",
+--         replacement = function()
+--           local result = config.get_input("environment: ")
+--           if result then
+--             return { { result }, { result } }
+--           end
+--         end,
+--       },
+--     },
+--     x = {
+--       add = { "\\ex ", " \\xe" },
+--       find = "\\p?ex.-\\xe",
+--       delete = "^(\\p?ex)().-(\\xe)()$",
+--     },
+--     p = {
+--       add = { "\\pex ", " \\xe" },
+--     },
+--     b = {
+--       add = { "\\textbf{", "}" },
+--       find = function()
+--         return config.get_selection({ textobject = "c" })
+--       end,
+--       delete = "^(\\textbf{)().-(})()$",
+--       change = {
+--         target = "^(\\textbf{)().-(})()$",
+--       },
+--     },
+--     i = {
+--       add = { "\\emph{", "}" },
+--       find = function()
+--         return config.get_selection({ textobject = "c" })
+--       end,
+--       delete = "^(\\emph{)().-(})()$",
+--       change = {
+--         target = "^(\\emph{)().-(})()$",
+--       },
+--     },
+--     s = {
+--       add = { "\\textsc{", "}" },
+--       find = function()
+--         return config.get_selection({ textobject = "c" })
+--       end,
+--       delete = "^(\\textsc{)().-(})()$",
+--       change = {
+--         target = "^(\\textsc{)().-(})()$",
+--       },
+--     },
+--     g = {
+--       add = { "\\begingl", "\\endgl" },
+--       find = "\\begingl.-\\endgl",
+--       delete = "^(\\begingl)().-(\\endgl)()$",
+--     },
+--   },
+-- })

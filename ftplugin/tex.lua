@@ -1,0 +1,1 @@
+-- vim.cmd([[call vimtex#syntax#core#new_region_math('tikzcd')]])

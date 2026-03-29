@@ -1,0 +1,1 @@
+vim.cmd([[luafile /Users/haomingli/.config/nvim/lua/plugins/colorschemes/tokyonight.lua]])

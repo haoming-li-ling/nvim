@@ -1,0 +1,64 @@
+-- local str = [[this]]
+-- local config = require("nvim-surround.config")
+-- local patterns = require("nvim-surround.patterns")
+-- local buffer = require("nvim-surround.buffer")
+--
+-- ---Get useful parameters from char
+-- ---@param char string
+-- ---@return selection?
+-- ---@return string[]
+-- ---@return string
+-- local function get_parameters(char)
+--   local selection = config.get_selection({ char = char })
+--   local lines = buffer.get_text(selection)
+--   local text = table.concat(lines, "\n")
+--   return selection, lines, text
+-- end
+--
+-- local function delete_lua_string()
+--   local selection, lines, _ = get_parameters("q")
+--   local char1 = lines[1]:sub(1, 1)
+--   if char1 ~= "[" then
+--     return patterns.get_selections(selection, "^(.)().-(.)()$")
+--   else
+--     return patterns.get_selections(selection, "^(%[=*%[)().-(%]=*%])()$")
+--   end
+-- end
+--
+-- require("nvim-surround").buffer_setup({
+--   aliases = {
+--     q = false, -- { '"', "'", "Q", "`" },
+--   },
+--   surrounds = {
+--     q = {
+--       find = function()
+--         return config.get_selection({
+--           query = {
+--             capture = "@string.outer",
+--             type = "textobjects",
+--           },
+--         })
+--       end,
+--       delete = delete_lua_string,
+--       change = {
+--         target = delete_lua_string,
+--       },
+--     },
+--     Q = {
+--       add = { "[[", "]]" },
+--       find = "%[%[.-%]%]",
+--       delete = "^(%[%[)().-(%]%])()$",
+--       change = {
+--         target = "^(%[%[)().-(%]%])()$",
+--       },
+--     },
+--     k = {
+--       add = { '["', '"]' },
+--       find = '%[".-"%]',
+--       delete = '^(%[")().-("%])()$',
+--       change = {
+--         target = '^(%[")().-("%])()$',
+--       },
+--     },
+--   },
+-- })
