@@ -31,6 +31,7 @@ map("n", "<leader>fk", "<cmd>e $MYKEYMAP<cr>", { desc = "Edit keymap", silent = 
 map("n", "<leader>fo", "<cmd>e $MYOPTIONS<cr>", { desc = "Edit options", silent = true })
 map("n", "<leader>fa", "<cmd>e $AUTOCMDS<cr>", { desc = "Edit autocommands", silent = true })
 map("n", "<leader>fc", "<cmd>cd %:p:h<cr>", { desc = "CWD to current file", silent = true })
+map("n", "<leader>L", "<cmd>lua vim.pack.update()<cr>", { desc = "Update plugins" })
 
 -- map("n", "<leader>hrr", "<cmd>luafile $MYINITVIM<cr>", { desc = "Reload main config", silent = true })
 
@@ -59,7 +60,7 @@ map("n", "<D-v>", '"+p')
 map("x", "<D-c>", '"+y')
 map("x", "<D-x>", '"+d')
 
-map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+-- map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 map("i", "<c-;>", "'<c-g>u<Esc>[s1z=`]a<c-g>u'", { expr = true })
 -- vim.keymap.set("i", "<c-bs>", "'<c-w>'", { expr = true })
@@ -87,6 +88,24 @@ map(
   { desc = "Format Thunder links", remap = true }
 )
 map({ "x", "o" }, "aF", "Va1", { remap = true })
+map({ "n", "x", "o" }, "<C-n>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = "Select parent (outer) node" })
+map({ "n", "x", "o" }, "<C-p>", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_child(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(-vim.v.count1)
+  end
+end, { desc = "Select child (inner) node" })
+
+map({ "n" }, "<leader>U", function()
+  require("undotree").open()
+end)
 -- vim.api.nvim_create_user_command("Thunder", function()
 -- 	vim.cmd(
 -- 		[[normal! <cmd>e scratch<cr>,p<cmd>%s/"},{"url":"/\r/g | %s/"}],"threadCount":5}//g<cr>ggVG,y<leader>bK<leader>qq]]

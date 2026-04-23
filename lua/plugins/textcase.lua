@@ -1,3 +1,7 @@
+vim.pack.add({
+  "https://github.com/johmsalas/text-case.nvim",
+})
+
 local keys = {}
 local keymap = {
   u = { "to_upper_case", "To UPPERCASE" },
@@ -32,9 +36,3 @@ for key, case_desc in pairs(keymap) do
     }
   end
 end
-return {
-  {
-    "johmsalas/text-case.nvim",
-    keys = keys,
-  },
-}

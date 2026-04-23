@@ -31,6 +31,4 @@ monokai.setup({
     Comment = { fg = "#a0a0a0", style = "italic" },
     TSFunctionCall = { fg = palette.green, style = "NONE" },
     TSKeyword = { fg = palette.pink, style = "NONE" },
-    TSKeywordFunction = { fg = palette.pink, style = "NONE" },
-  },
-})
+    TSKeywordFunction = { fg = palette.pink, style = "NONE" } } })

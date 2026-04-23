@@ -1,26 +1,15 @@
-return {
-  {
-    "Kicamon/markdown-table-mode.nvim",
-    ft = { "quarto", "markdown" },
-    opts = {
-      filetype = {
-        "*.md",
-        "*.qmd",
-      },
-    },
-    -- config = function()
-    -- 	require("markdown-table-mode").setup()
-    -- end,
+vim.pack.add({
+  "https://github.com/Kicamon/markdown-table-mode.nvim",
+  "https://github.com/quarto-dev/quarto-nvim",
+  "https://github.com/jmbuhr/otter.nvim",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
+})
+
+require("markdown-table-mode").setup({
+  filetype = {
+    "*.md",
+    "*.qmd",
   },
-  {
-    "quarto-dev/quarto-nvim",
-    ft = { "quarto" },
-    init = function()
-      vim.cmd([[autocmd Filetype quarto call vimtex#init()]])
-    end,
-    dependencies = {
-      "jmbuhr/otter.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-}
+})
+
+vim.cmd([[autocmd Filetype quarto call vimtex#init()]])

@@ -1,91 +1,33 @@
-return {
-  "mrjones2014/smart-splits.nvim",
-  enabled = true,
-  opts = {
-    at_edge = "stop",
-  },
-  keys = {
-    -- {
-    -- 	"<A-h>",
-    -- 	function()
-    -- 		require("smart-splits").resize_left()
-    -- 	end,
-    -- },
-    -- {
-    -- 	"<A-j>",
-    -- 	function()
-    -- 		require("smart-splits").resize_down()
-    -- 	end,
-    -- },
-    -- {
-    -- 	"<A-k>",
-    -- 	function()
-    -- 		require("smart-splits").resize_up()
-    -- 	end,
-    -- },
-    -- {
-    -- 	"<A-l>",
-    -- 	function()
-    -- 		require("smart-splits").resize_right()
-    -- 	end,
-    -- },
-    {
-      "<C-h>",
-      function()
-        require("smart-splits").move_cursor_left()
-      end,
-      mode = { "n", "x", "t" },
-    },
-    {
-      "<C-j>",
-      function()
-        require("smart-splits").move_cursor_down()
-      end,
-      mode = { "n", "x", "t" },
-    },
-    {
-      "<C-k>",
-      function()
-        require("smart-splits").move_cursor_up()
-      end,
-      mode = { "n", "x", "t" },
-    },
-    {
-      "<C-l>",
-      function()
-        require("smart-splits").move_cursor_right()
-      end,
-      mode = { "n", "x", "t" },
-    },
-    {
-      "<C-\\>",
-      function()
-        require("smart-splits").move_cursor_previous()
-      end,
-    },
-    {
-      "<leader><leader>h",
-      function()
-        require("smart-splits").swap_buf_left()
-      end,
-    },
-    {
-      "<leader><leader>j",
-      function()
-        require("smart-splits").swap_buf_down()
-      end,
-    },
-    {
-      "<leader><leader>k",
-      function()
-        require("smart-splits").swap_buf_up()
-      end,
-    },
-    {
-      "<leader><leader>l",
-      function()
-        require("smart-splits").swap_buf_right()
-      end,
-    },
-  },
-}
+vim.pack.add({
+  "https://github.com/mrjones2014/smart-splits.nvim",
+})
+require("smart-splits").setup({
+  at_edge = "stop",
+})
+vim.keymap.set({ "n", "x", "t" }, "<C-h>", function()
+  require("smart-splits").move_cursor_left()
+end)
+vim.keymap.set({ "n", "x", "t" }, "<C-j>", function()
+  require("smart-splits").move_cursor_down()
+end)
+vim.keymap.set({ "n", "x", "t" }, "<C-k>", function()
+  require("smart-splits").move_cursor_up()
+end)
+vim.keymap.set({ "n", "x", "t" }, "<C-l>", function()
+  require("smart-splits").move_cursor_right()
+end)
+vim.keymap.set("n", "<C-\\>", function()
+  require("smart-splits").move_cursor_previous()
+end)
+vim.keymap.set("n", "<leader><leader>h", function()
+  require("smart-splits").swap_buf_left()
+end)
+vim.keymap.set("n", "<leader><leader>j", function()
+  require("smart-splits").swap_buf_down()
+end)
+vim.keymap.set("n", "<leader><leader>k", function()
+  require("smart-splits").swap_buf_up()
+end)
+vim.keymap.set("n", "<leader><leader>l", function()
+  require("smart-splits").swap_buf_right()
+end)

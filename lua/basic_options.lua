@@ -9,6 +9,9 @@ vim.o.smartcase = true
 vim.o.autoindent = true
 vim.o.cindent = true
 vim.o.exrc = true
+-- nvim/init.lua
+
+vim.opt.statusline = "%{%v:lua.require'statusline'.render()%}"
 
 vim.o.conceallevel = 2
 vim.o.smarttab = true
@@ -18,7 +21,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.foldlevel = 99
 
-vim.o.scrolloff = 8
+-- vim.o.scrolloff = 8
 vim.o.inccommand = "nosplit"
 vim.o.redrawtime = 1000
 -- vim.o.lazyredraw = true
@@ -86,14 +89,25 @@ vim.g.fzf_prefix = "<leader>`"
 vim.g.snack_prefix = "<leader>"
 vim.g.telescope_prefix = "<leader>\\"
 -- vim.treesitter.language.register("bash", "zsh")
+
 local function setpairs(match, _, source, predicate, metadata)
   -- (#set-pairs! @aa key list)
   local capture_id = predicate[2]
-  local node = match[capture_id]
+  if not match[capture_id] then
+    return
+  end
+  if not match[capture_id][1] then
+    return
+  end
+  local node = match[capture_id][1]
   local key = predicate[3]
   if not node then
     return
   end
+  if not node.range then
+    return
+  end
+  -- local node_text = vim.treesitter.get_node_text(node, source)
   local node_text = vim.treesitter.get_node_text(node, source)
   -- if metadata[capture_id] and metadata[capture_id].range then
   --   local sr, sc, er, ec = unpack(metadata[capture_id].range)
@@ -120,3 +134,50 @@ vim.treesitter.query.add_directive("set-pairs!", setpairs, { force = true })
 --   },
 -- })
 vim.g.whichkey = true
+vim.o.cmdheight = 0
+require("vim._core.ui2").enable({
+  enable = true,
+  msg = {
+    targets = {
+      [""] = "msg",
+      empty = "cmd",
+      bufwrite = "msg",
+      confirm = "cmd",
+      emsg = "pager",
+      echo = "msg",
+      echomsg = "msg",
+      echoerr = "pager",
+      completion = "cmd",
+      list_cmd = "pager",
+      lua_error = "pager",
+      lua_print = "msg",
+      progress = "pager",
+      rpc_error = "pager",
+      quickfix = "msg",
+      search_cmd = "cmd",
+      search_count = "cmd",
+      shell_cmd = "pager",
+      shell_err = "pager",
+      shell_out = "pager",
+      shell_ret = "msg",
+      undo = "msg",
+      verbose = "pager",
+      wildlist = "cmd",
+      wmsg = "msg",
+      typed_cmd = "cmd",
+    },
+    cmd = {
+      height = 0.5,
+    },
+    dialog = {
+      height = 0.5,
+    },
+    msg = {
+      height = 0.3,
+      timeout = 5000,
+    },
+    pager = {
+      height = 0.5,
+    },
+  },
+})

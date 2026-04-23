@@ -134,10 +134,7 @@ local function rec_gen(bullet, node)
         sn(nil, {
           t({ "", bullet }),
           node(),
-          d(2, temp),
-        }),
-      }),
-    })
+          d(2, temp) }) }) })
   end
   return temp
 end
@@ -147,8 +144,7 @@ local function ng_node()
     i(1, "word"),
     t("["),
     i(2, "gloss"),
-    t("]"),
-  })
+    t("]") })
 end
 
 ---Make ngloss indent snippet node
@@ -168,8 +164,7 @@ function M.gln(index, indent)
         i(1, "word"),
         i(2, "gloss"),
         d(3, rec_gen("  ", ng_node)),
-        i(4, "translation"),
-      }
+        i(4, "translation") }
     ),
     indent
   )
@@ -240,10 +235,7 @@ local function rec_table_gen(index, indent)
         sn(nil, {
           t({ "\\\\", indent }),
           d(1, M.table_node, ai[index]),
-          d(2, temp),
-        }),
-      }),
-    })
+          d(2, temp) }) }) })
   end
   return temp
 end

@@ -1,6 +1,6 @@
 return {
-  snippet("eq", fmta([[<-]], {})),
-  snippet("pp", fmta([[%>%]], {})),
-  snippet("tpp", fmta([[%T>%]], {})),
-  snippet("spp", fmta([[%$%]], {})),
+  snippet("eq", fmt([[<-]], {})),
+  snippet("pp", fmt([[%>%]], {})),
+  snippet("tpp", fmt([[%T>%]], {})),
+  snippet("spp", fmt([[%$%]], {})),
 }

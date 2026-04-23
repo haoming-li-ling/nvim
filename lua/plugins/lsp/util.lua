@@ -8,9 +8,7 @@ vim.g.symbols_outline = {
     hover_symbol = "K",
     toggle_preview = "P",
     rename_symbol = "r",
-    code_actions = "a",
-  },
-}
+    code_actions = "a" } }
 
 local M = {}
 
@@ -30,8 +28,7 @@ function M.format_on_save(client, bufnr)
       group = lsp_format_augroup,
       callback = function()
         vim.lsp.buf.format({ async = false })
-      end,
-    })
+      end })
   end
 end
 
@@ -57,24 +54,21 @@ local local_keymaps = {
       return ":IncRename " .. vim.fn.expand("<cword>")
     end,
     desc = "Inc-Rename",
-    expr = true,
-  },
+    expr = true },
   {
     "<leader>ln",
     function()
       vim.lsp.buf.selection_range(1)
     end,
     desc = "increment selection",
-    mode = { "n", "x" },
-  },
+    mode = { "n", "x" } },
   {
     "<leader>lp",
     function()
       vim.lsp.buf.selection_range(-1)
     end,
     desc = "increment selection",
-    mode = { "n", "x" },
-  },
+    mode = { "n", "x" } },
   { "gr", vim.lsp.buf.rename, desc = "LSP rename variable" },
   { "<leader>D", vim.lsp.buf.type_definition, desc = "Goto type definition" },
   { "<leader>ca", vim.lsp.buf.code_action, desc = "Code action", mode = { "n", "x" } },
@@ -83,24 +77,20 @@ local local_keymaps = {
     function()
       vim.lsp.buf.format({ async = true })
     end,
-    desc = "Format buffer",
-  },
+    desc = "Format buffer" },
   -- { "<leader>li", "<cmd>LspInfo<CR>", desc = "LSP info" },
   { "<leader>ls", vim.lsp.buf.signature_help, desc = "Buffer signature help" },
   { "<leader>lwa", vim.lsp.buf.add_workspace_folder, desc = "Add workspace folder" },
   {
     "<leader>lwr",
     vim.lsp.buf.remove_workspace_folder,
-    desc = "Remove workspace folder",
-  },
+    desc = "Remove workspace folder" },
   {
     "<leader>lwl",
     function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
-    desc = "List workspace folders",
-  },
-}
+    desc = "List workspace folders" } }
 
 M.on_attach = function(_client, bufnr)
   -- vim.lsp.inlay_hint.enable()

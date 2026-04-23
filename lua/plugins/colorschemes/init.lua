@@ -1,40 +1,16 @@
-return {
-  {
-    "folke/tokyonight.nvim",
-    lazy = true,
-  },
-  { "navarasu/onedark.nvim", lazy = true },
-  { "tanvirtin/monokai.nvim", lazy = true },
-  { "marko-cerovac/material.nvim", lazy = true },
-  { "sam4llis/nvim-tundra", lazy = true },
-  { "ellisonleao/gruvbox.nvim", lazy = true },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "rebelot/kanagawa.nvim", name = "kanagawa", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "fynnfluegge/monet.nvim", name = "monet", lazy = true },
-  { "savq/melange-nvim", name = "melange", lazy = true },
-  {
-    "AlexvZyl/nordic.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    name = "nordic",
-    lazy = true,
-    -- config = function() require("nordic").load() end,
-  },
-  {
-    "rmehri01/onenord.nvim",
-    name = "onenord",
-    lazy = true,
-  },
-  {
-    "uhs-robert/oasis.nvim",
-    lazy = true,
-    enabled = false,
-    -- lazy = false,
-    -- priority = 1000,
-    -- config = function()
-    --   require("oasis").setup()      -- (see Configuration below for all customization options)
-    --   vim.cmd.colorscheme("oasis")  -- After setup, apply theme (or a any style like "oasis-night")
-    -- end
-  },
-}
+vim.pack.add({
+  "https://github.com/folke/tokyonight.nvim",
+  "https://github.com/navarasu/onedark.nvim",
+  "https://github.com/tanvirtin/monokai.nvim",
+  "https://github.com/marko-cerovac/material.nvim",
+  "https://github.com/sam4llis/nvim-tundra",
+  "https://github.com/ellisonleao/gruvbox.nvim",
+  "https://github.com/catppuccin/nvim",
+  "https://github.com/rebelot/kanagawa.nvim",
+  "https://github.com/EdenEast/nightfox.nvim",
+  "https://github.com/fynnfluegge/monet.nvim",
+  "https://github.com/savq/melange-nvim",
+  "https://github.com/AlexvZyl/nordic.nvim",
+  "https://github.com/rmehri01/onenord.nvim",
+  "https://github.com/uhs-robert/oasis.nvim",
+})

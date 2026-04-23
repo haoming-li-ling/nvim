@@ -4,7 +4,6 @@ require("monet").setup({
   dark_mode = true,
   highlight_overrides = {},
   color_overrides = {},
-  styles = {},
-})
+  styles = {} })
 
 require("monet").colorscheme()

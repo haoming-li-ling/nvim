@@ -1,3 +1,3 @@
-return {
-  { "https://github.com/luafun/luafun" },
-}
+vim.pack.add({
+  "https://github.com/luafun/luafun",
+})

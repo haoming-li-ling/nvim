@@ -7,17 +7,14 @@ return {
     section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = {},
-      winbar = {},
-    },
+      winbar = {} },
     ignore_focus = {},
     always_divide_middle = true,
     globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
-      winbar = 1000,
-    },
-  },
+      winbar = 1000 } },
   sections = {
     lualine_a = {
       {
@@ -30,8 +27,7 @@ return {
     lualine_b = {
       -- "branch",
       -- "diff",
-      "diagnostics",
-    },
+      "diagnostics" },
     lualine_c = {
       "filename",
       function()
@@ -60,41 +56,32 @@ return {
         icon = "",
         -- icon = "",
         -- icon = ' LSP:',
-        color = { fg = "#ffffff", gui = "bold" },
-      },
-    },
+        color = { fg = "#ffffff", gui = "bold" } } },
     lualine_x = {
       "encoding",
       "fileformat",
-      { "filetype", icons_enabled = false },
-    },
+      { "filetype", icons_enabled = false } },
     lualine_y = {
       function()
         return require("recorder").recordingStatus()
       end,
       function()
         return require("recorder").displaySlots()
-      end,
-    },
+      end },
     lualine_z = {
       {
         "location",
         fmt = function(str)
           return string.format("%7s", str)
-        end,
-      },
-    },
-  },
+        end } } },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { "filename" },
     lualine_x = { "location" },
     lualine_y = {},
-    lualine_z = {},
-  },
+    lualine_z = {} },
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = { "neo-tree", "aerial", "symbols-outline", "quickfix" },
-}
+  extensions = { "neo-tree", "aerial", "symbols-outline", "quickfix" } }

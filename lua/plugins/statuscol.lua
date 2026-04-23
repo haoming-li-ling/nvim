@@ -23,51 +23,47 @@ local function get_num_wraps()
   return wrapped_lines
 end
 
-return {
-  "luukvbaal/statuscol.nvim",
-  event = "VeryLazy",
-  config = function()
-    -- local builtin = require("statuscol.builtin")
-    require("statuscol").setup(
+vim.pack.add({
+  "https://github.com/luukvbaal/statuscol.nvim",
+})
+require("statuscol").setup(
+  {
+    -- configuration goes here, for example:
+    -- relculright = true,
+    segments = {
       {
-        -- configuration goes here, for example:
-        -- relculright = true,
-        segments = {
-          {
-            text = {
-              " ",
-              "%=",
-              function(args)
-                if vim.v.virtnum < 0 then
-                  return "-"
-                elseif vim.v.virtnum > 0 and (vim.wo.number or vim.wo.relativenumber) then
-                  local num_wraps = get_num_wraps()
+        text = {
+          " ",
+          "%=",
+          function(args)
+            if vim.v.virtnum < 0 then
+              return "-"
+            elseif vim.v.virtnum > 0 and (vim.wo.number or vim.wo.relativenumber) then
+              local num_wraps = get_num_wraps()
 
-                  if vim.v.virtnum == num_wraps then
-                    return "└"
-                  else
-                    return "├"
-                  end
-                end
+              if vim.v.virtnum == num_wraps then
+                return "└"
+              else
+                return "├"
+              end
+            end
 
-                return require("statuscol.builtin").lnumfunc(args)
-              end,
-              " ",
-            },
-          },
+            return require("statuscol.builtin").lnumfunc(args)
+          end,
+          " ",
         },
-      }
-      --   { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-      --   {
-      --     sign = { namespace = { "diagnostic/signs" }, maxwidth = 2, auto = true },
-      --     click = "v:lua.ScSa"
-      --   },
-      --   { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
-      --   {
-      --     sign = { name = { ".*" }, maxwidth = 2, colwidth = 1, auto = true, wrap = true },
-      --     click = "v:lua.ScSa"
-      --   },
-      -- }
-    )
-  end,
-}
+      },
+    },
+  }
+  --   { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+  --   {
+  --     sign = { namespace = { "diagnostic/signs" }, maxwidth = 2, auto = true },
+  --     click = "v:lua.ScSa"
+  --   },
+  --   { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
+  --   {
+  --     sign = { name = { ".*" }, maxwidth = 2, colwidth = 1, auto = true, wrap = true },
+  --     click = "v:lua.ScSa"
+  --   },
+  -- }
+)

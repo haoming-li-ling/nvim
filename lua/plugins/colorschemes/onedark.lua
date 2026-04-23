@@ -1,8 +1,7 @@
 require("onedark").setup({
   colors = {
     bg4 = "#4c505d",
-    lighter_gray = "#959ca9",
-  },
+    lighter_gray = "#959ca9" },
   highlights = {
     TelescopeSelection = { bg = "$bg4" },
     TelescopeBorder = { bg = "$bg3" },
@@ -21,8 +20,6 @@ require("onedark").setup({
     Conceal = { fg = "$orange", bg = "$bg1" },
     SpellBad = { underline = true, sp = "#ff0000" },
     TSComment = { fg = "#737a87", italic = true },
-    TSStrong = { fg = "#ffffff", bold = true },
-  },
-})
+    TSStrong = { fg = "#ffffff", bold = true } } })
 
 require("onedark").load()

@@ -1,5 +1,3 @@
-return {
-  "R-nvim/R.nvim",
-  enabled = true,
-  lazy = false,
-}
+vim.pack.add({
+  "https://github.com/R-nvim/R.nvim",
+})

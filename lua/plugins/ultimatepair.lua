@@ -1,100 +1,89 @@
-return {
-  "altermo/ultimate-autopair.nvim",
-  enabled = true,
-  branch = "v0.6",
-  event = { "InsertEnter", "CmdlineEnter" },
-  opts = {},
-  dependencies = "nvim-treesitter/nvim-treesitter",
-  -- commit = "667d2304e8eb9ddbfa7f962528cfce0a5edcc163",
-  -- commit = "341d874ec5668e0a39765b1fd686eae0a8f28ad1",
-  -- commit = "4bd7538b394b4026dc93dd345108149564ee2c00",
-  -- commit = "5ac99260db36ea19512cdc27ea8eb11081f10fa7",
-  config = function()
-    -- require("ultimate-autopair").setup()
-    require("ultimate-autopair").setup({
-      { "`", "'", fly = true, ft = { "tex", "latex" } },
-      {
-        "\\(",
-        "\\)",
-        ft = { "tex", "latex" },
-        space = true,
-        disable_end = true,
-        multiline = false,
-      },
-      {
-        "\\[",
-        "\\]",
-        ft = { "tex", "latex" },
-        space = true,
-        disable_end = true,
-        multiline = false,
-      },
-      { "`", "'", fly = true, ft = { "tex", "latex" }, multiline = false },
-      {
-        "\\{",
-        "\\}",
-        ft = { "tex", "latex" },
-        space = true,
-        disable_end = true,
-        multiline = false,
-      },
-      -- bs = {
-      -- 	enable = true,
-      -- },
-      -- space2 = {
-      -- 	enable = true,
-      -- },
-      -- space = {
-      -- 	enable = true,
-      -- },
-      cmap = false,
-      config_internal_pairs = {
-        {
-          "[",
-          "]",
-          fly = true,
-          dosuround = true,
-          newline = true,
-          space = true,
-          multiline = false,
-        },
-        {
-          "(",
-          ")",
-          fly = true,
-          dosuround = true,
-          newline = true,
-          space = true,
-          multiline = false,
-        },
-        {
-          "{",
-          "}",
-          fly = true,
-          dosuround = true,
-          newline = true,
-          space = true,
-          multiline = false,
-        },
-        { '"', '"', suround = true, multiline = false, alpha = { "txt" } },
-        {
-          "'",
-          "'",
-          suround = true,
-          cond = function(fn)
-            return not fn.in_lisp() or fn.in_string()
-          end,
-          alpha = true,
-          nft = { "tex", "latex" },
-          multiline = false,
-        },
-        { "`", "`", nft = { "tex", "latex" }, multiline = false },
-        -- { "``", "''", ft = { "tex", "latex" } },
-        -- { "```", "```", newline = true, ft = { "markdown" } },
-        { "<!--", "-->", ft = { "markdown", "html" } },
-        { '"""', '"""', newline = true, ft = { "python" } },
-        -- { "'''", "'''", newline = true, ft = { "python" } },
-      },
-    })
-  end,
-}
+vim.pack.add({
+  "https://github.com/altermo/ultimate-autopair.nvim",
+})
+
+require("ultimate-autopair").setup({
+  { "`", "'", fly = true, ft = { "tex", "latex" } },
+  {
+    "\\(",
+    "\\)",
+    ft = { "tex", "latex" },
+    space = true,
+    disable_end = true,
+    multiline = false,
+  },
+  {
+    "\\[",
+    "\\]",
+    ft = { "tex", "latex" },
+    space = true,
+    disable_end = true,
+    multiline = false,
+  },
+  { "`", "'", fly = true, ft = { "tex", "latex" }, multiline = false },
+  {
+    "\\{",
+    "\\}",
+    ft = { "tex", "latex" },
+    space = true,
+    disable_end = true,
+    multiline = false,
+  },
+  -- bs = {
+  -- 	enable = true,
+  -- },
+  -- space2 = {
+  -- 	enable = true,
+  -- },
+  -- space = {
+  -- 	enable = true,
+  -- },
+  cmap = false,
+  config_internal_pairs = {
+    {
+      "[",
+      "]",
+      fly = true,
+      dosuround = true,
+      newline = true,
+      space = true,
+      multiline = false,
+    },
+    {
+      "(",
+      ")",
+      fly = true,
+      dosuround = true,
+      newline = true,
+      space = true,
+      multiline = false,
+    },
+    {
+      "{",
+      "}",
+      fly = true,
+      dosuround = true,
+      newline = true,
+      space = true,
+      multiline = false,
+    },
+    { '"', '"', suround = true, multiline = false, alpha = { "txt" } },
+    {
+      "'",
+      "'",
+      suround = true,
+      cond = function(fn)
+        return not fn.in_lisp() or fn.in_string()
+      end,
+      alpha = true,
+      nft = { "tex", "latex" },
+      multiline = false,
+    },
+    { "`", "`", nft = { "tex", "latex" }, multiline = false },
+    -- { "``", "''", ft = { "tex", "latex" } },
+    -- { "```", "```", newline = true, ft = { "markdown" } },
+    { "<!--", "-->", ft = { "markdown", "html" } },
+    { '"""', '"""', newline = true, ft = { "python" } },
+    -- { "'''", "'''", newline = true, ft = { "python" } },
+  },
+})

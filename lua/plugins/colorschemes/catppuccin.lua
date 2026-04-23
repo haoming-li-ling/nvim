@@ -3,8 +3,7 @@ local colors = require("catppuccin.palettes").get_palette() -- g:catppuccin_flav
 require("catppuccin").setup({
   term_colors = true,
   integrations = {
-    treesitter = true,
-  },
+    treesitter = true },
   custom_highlights = {
     Conceal = { fg = colors.peach },
     -- TelescopeBorder = { bg = colors.surface1 },
@@ -19,9 +18,7 @@ require("catppuccin").setup({
     TelescopeResultsTitle = { fg = colors.base, bg = colors.peach },
     TelescopePreviewTitle = { fg = colors.base, bg = colors.maroon },
     WinSeparator = { fg = colors.blue },
-    ["@markup.italic"] = { fg = colors.text },
-  },
-})
+    ["@markup.italic"] = { fg = colors.text } } })
 vim.api.nvim_command("colorscheme catppuccin")
 
 vim.cmd([[hi! link helpCommand helpExample]])
@@ -54,5 +51,4 @@ local _ = {
 
   base = "#24273A",
   mantle = "#1E2030",
-  crust = "#181926",
-}
+  crust = "#181926" }

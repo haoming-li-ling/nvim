@@ -21,17 +21,13 @@ require("gruvbox").setup({
     TelescopeResultsTitle = { fg = palette.dark1, bg = palette.neutral_yellow },
     IndentBlanklineContextChar = {
       fg = palette.neutral_purple,
-      nocombine = true,
-    },
+      nocombine = true },
     IndentBlanklineContextStart = {
       sp = palette.neutral_purple,
-      underline = true,
-    },
+      underline = true },
     SpellBad = { sp = "#ff0000", underline = true },
     TSString = { fg = palette.bright_green },
-    TSComment = { fg = palette.gray, italic = true },
-  },
-})
+    TSComment = { fg = palette.gray, italic = true } } })
 vim.o.background = "dark"
 vim.cmd([[hi! link @module.latex @function.latex]])
 vim.cmd([[colorscheme gruvbox]])

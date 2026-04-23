@@ -1,11 +1,11 @@
 local palette = require("nvim-tundra.palette.arctic")
+
 require("nvim-tundra").setup({
   plugins = {
     telescope = true,
     cmp = true,
     lsp = true,
-    gitsigns = true,
-  },
+    gitsigns = true },
   overwrite = {
     highlights = {
       Conceal = { fg = palette.orange._500 },
@@ -20,10 +20,7 @@ require("nvim-tundra").setup({
       TelescopePromptTitle = { fg = palette.gray._1000, bg = palette.green._500 },
       TelescopeResultsTitle = { fg = palette.gray._1000, bg = palette.orange._500 },
       TelescopePreviewTitle = { fg = palette.gray._1000, bg = palette.red._500 },
-      -- ["@field"] = { fg = palette. }
-    },
-  },
-})
+      -- ["@field"] = { fg = palette. } } } })
 vim.o.background = "dark"
 vim.cmd([[colorscheme tundra]])
 vim.cmd([[hi clear SpellBad]])
