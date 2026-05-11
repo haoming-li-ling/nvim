@@ -18,6 +18,7 @@ local sym_table = {
   rrbr = { "rrbracket", "⟧" },
   lang = { "langle", "⟨" },
   rang = { "rangle", "⟩" },
+  br = { "boxright" },
   -- ["o+"] = [[\oplus]],
 }
 
@@ -27,7 +28,9 @@ for k, v in pairs(sym_table) do
   local prefix_command = [[\]] .. command
   snips[#snips + 1] = snippet(k, t(prefix_command), math_mode)
   snips[#snips + 1] = snippet({ trig = prefix_command, priority = 1100 }, t(symbol), math_mode)
-  snips[#snips + 1] = snippet(symbol, t(prefix_command), math_mode)
+  if symbol then
+    snips[#snips + 1] = snippet(symbol, t(prefix_command), math_mode)
+  end
 end
 
 local auto_sym_table = {

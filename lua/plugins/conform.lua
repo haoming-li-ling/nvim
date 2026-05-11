@@ -17,6 +17,9 @@ require("conform").setup({
     return { timeout_ms = 700, quiet = true, lsp_fallback = false }
   end,
   formatters_by_ft = {
+    fish = {
+      "fish_indent"
+    },
     toml = {
       "tombi",
     },

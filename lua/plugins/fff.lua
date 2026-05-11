@@ -20,7 +20,28 @@ vim.g.fff = {
     show_scores = true,
   },
 }
+if vim.g.finder == "fff" then
+  vim.keymap.set("n", "<leader>ff", function()
+    require("fff").find_files()
+  end, { desc = "FFFind files" })
 
-vim.keymap.set("n", "<leader>ff", function()
-  require("fff").find_files()
-end, { desc = "FFFind files" })
+  vim.keymap.set("n", "<leader>.", function()
+    require("fff").find_files()
+  end, { desc = "FFFind files" })
+
+  vim.keymap.set("n", "<leader><leader>", function()
+    require("fff").find_files()
+  end, { desc = "FFFind files" })
+
+  vim.keymap.set("n", "<leader>sg", function()
+    require("fff").live_grep()
+  end)
+
+  vim.keymap.set("n", "<leader>fc", function()
+    require("fff").find_files({ cwd = vim.fn.stdpath("config") })
+  end, { desc = "Find Config File" })
+
+  vim.keymap.set("n", "<leader>f,", function()
+    require("fff").find_files({ cwd = vim.fn.stdpath("config") })
+  end, { desc = "Find Config File" })
+end

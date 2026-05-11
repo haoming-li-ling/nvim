@@ -7,21 +7,29 @@ local ai = require("mini.ai")
 local ts = ai.gen_spec.treesitter
 -- local spec_pair = ai.gen_spec.pair
 -- local gen_spec = ai.gen_spec
--- local function adjust_sel(sel)
---   local lines = vim.api.nvim_buf_get_text(0, sel.from.line - 1, sel.from.col - 1, sel.from.line, 0, {})
---   local _, _, eq_seq = lines[1]:find("^%[(=*)")
---   if eq_seq then
---     return {
---       from = { line = sel.from.line, col = sel.from.col + 2 + #eq_seq },
---       to = { line = sel.to.line, col = sel.to.col - 2 - #eq_seq },
---     }
---   else
---     return {
---       from = { line = sel.from.line, col = sel.from.col + 1 },
---       to = { line = sel.to.line, col = sel.to.col - 1 },
---     }
---   end
--- end
+
+---@alias Selection { from: { line: integer, col: integer }, to: { line: integer, col: integer } }
+---@param sel Selection
+---@return Selection
+local function adjust_sel(sel)
+  local lines = vim.api.nvim_buf_get_text(0, sel.from.line - 1, sel.from.col - 1, sel.from.line, 0, {})
+  local _, _, eq_seq = lines[1]:find("^%[(=*)")
+  if eq_seq then
+    return {
+      from = { line = sel.from.line, col = sel.from.col + 2 + #eq_seq },
+      to = { line = sel.to.line, col = sel.to.col - 2 - #eq_seq },
+    }
+  else
+    return {
+      from = { line = sel.from.line, col = sel.from.col + 1 },
+      to = { line = sel.to.line, col = sel.to.col - 1 },
+    }
+  end
+end
+
+--- ---@param _src table|function Table or iterator to drain values from
+--- ---@return Iter
+--- function vim.iter(_src) end
 
 vim.b.miniai_config = {
   custom_textobjects = {
@@ -40,24 +48,7 @@ vim.b.miniai_config = {
       if mode == "a" then
         return sels
       else
-        -- return totable(map(adjust_sel, sels))
-        local results = {}
-        for _, sel in ipairs(sels) do
-          local lines = vim.api.nvim_buf_get_text(0, sel.from.line - 1, sel.from.col - 1, sel.from.line, 0, {})
-          local _, _, eq_seq = lines[1]:find("^%[(=*)")
-          if eq_seq then
-            results[#results + 1] = {
-              from = { line = sel.from.line, col = sel.from.col + 2 + #eq_seq },
-              to = { line = sel.to.line, col = sel.to.col - 2 - #eq_seq },
-            }
-          else
-            results[#results + 1] = {
-              from = { line = sel.from.line, col = sel.from.col + 1 },
-              to = { line = sel.to.line, col = sel.to.col - 1 },
-            }
-          end
-        end
-        return results
+        return vim.iter(sels):map(adjust_sel):totable()
       end
     end,
   },

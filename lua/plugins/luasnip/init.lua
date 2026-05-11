@@ -2,6 +2,17 @@ vim.pack.add({
   "https://github.com/L3MON4D3/LuaSnip",
   "https://github.com/rafamadriz/friendly-snippets",
 })
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "LuaSnip" and (kind == "install" or kind == "update") then
+      if not ev.data.active then
+        vim.cmd.packadd("LuaSnip")
+      end
+      vim.system({ "make", "install_jsregexp" })
+    end
+  end,
+})
 
 vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders").edit_snippet_files()]])
 vim.keymap.set("n", "<leader>ye", "<cmd>LuaSnipEdit<cr>", { desc = "Edit Lua snippets" })

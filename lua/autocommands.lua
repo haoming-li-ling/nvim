@@ -126,3 +126,25 @@ autocmd("BufWritePost", {
     vim.system({ "kill", "-SIGUSR1", kitty_pid }, { text = true }):wait()
   end,
 })
+
+-- local g = vim.api.nvim_create_augroup("format_on_save", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   group = g,
+--   pattern = "*.fish",
+--   callback = function()
+--     vim.cmd("normal! gg=G")
+--   end,
+-- })
+
+local fish = vim.api.nvim_create_augroup("fish", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = fish,
+  pattern = "fish",
+  callback = function()
+    -- vim.bo.equalprg = "fish_indent"
+    vim.bo.expandtab = true
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    vim.bo.softtabstop = 4
+  end,
+})

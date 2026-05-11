@@ -5,6 +5,7 @@ require("basic_keymap")
 require("autocommands")
 require("plugins")
 
+vim.opt.statusline = "%{%v:lua.require'statusline'.render()%}"
 require("current_theme")
 vim.cmd([[packadd nvim.undotree]])
 

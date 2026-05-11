@@ -11,8 +11,6 @@ vim.o.cindent = true
 vim.o.exrc = true
 -- nvim/init.lua
 
-vim.opt.statusline = "%{%v:lua.require'statusline'.render()%}"
-
 vim.o.conceallevel = 2
 vim.o.smarttab = true
 vim.o.tabstop = 2
@@ -21,6 +19,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.foldlevel = 99
 
+vim.o.winborder = "rounded"
 -- vim.o.scrolloff = 8
 vim.o.inccommand = "nosplit"
 vim.o.redrawtime = 1000
@@ -135,6 +134,7 @@ vim.treesitter.query.add_directive("set-pairs!", setpairs, { force = true })
 -- })
 vim.g.whichkey = true
 vim.o.cmdheight = 0
+vim.g.finder = "fff"
 require("vim._core.ui2").enable({
   enable = true,
   msg = {

@@ -73,11 +73,11 @@ require("blink.cmp").setup({
   },
   sources = {
     default = {
+      "lazydev",
       "latex",
       "lsp",
       "path",
       "buffer",
-      "lazydev",
       -- "references",
     },
     providers = {
@@ -98,11 +98,12 @@ require("blink.cmp").setup({
         },
       },
       lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        score_offset = 100,
         fallbacks = {
           "lsp",
         },
-        module = "lazydev.integrations.blink",
-        name = "LazyDev",
       },
       -- references = {
       --   module = "cmp-pandoc-references.blink",

@@ -4,6 +4,9 @@ vim.pack.add({
 })
 
 require("snacks-bibtex").setup({
+  mappings = {
+    ["<C-p>"] = false,
+  },
   context = {
     enabled = true,
     fallback = true,
@@ -88,87 +91,114 @@ Snacks.toggle
 vim.keymap.set("n", "<leader>bb", function()
   Snacks.picker.buffers()
 end, { desc = "Buffers" })
-vim.keymap.set("n", "<leader>sg", function()
-  Snacks.picker.grep()
-end, { desc = "Grep" })
-vim.keymap.set("n", "<leader>.", function()
-  Snacks.picker.files({ exclude = { "*.pdf", "*.eps" } })
-end, { desc = "Find Files" })
-vim.keymap.set("n", "<leader><space>", function()
-  Snacks.picker.smart()
-end, { desc = "Smart open" })
-vim.keymap.set("n", "<leader>fc", function()
-  Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "Find Config File" })
-vim.keymap.set("n", "<leader>f,", function()
-  Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-end, { desc = "Find Config File" })
-vim.keymap.set("n", "<leader>sc", function()
-  Snacks.picker.grep({ dirs = { vim.fn.stdpath("config") } })
-end, { desc = "Grep Config Files" })
+
+if vim.g.finder ~= "fff" then
+  vim.keymap.set("n", "<leader>sg", function()
+    Snacks.picker.grep()
+  end, { desc = "Grep" })
+  vim.keymap.set("n", "<leader>.", function()
+    Snacks.picker.files({ exclude = { "*.pdf", "*.eps" } })
+  end, { desc = "Find Files" })
+  vim.keymap.set("n", "<leader><space>", function()
+    Snacks.picker.smart()
+  end, { desc = "Smart open" })
+  vim.keymap.set("n", "<leader>fc", function()
+    Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+  end, { desc = "Find Config File" })
+
+  vim.keymap.set("n", "<leader>f,", function()
+    Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+  end, { desc = "Find Config File" })
+
+  vim.keymap.set("n", "<leader>sc", function()
+    Snacks.picker.grep({ dirs = { vim.fn.stdpath("config") } })
+  end, { desc = "Grep Config Files" })
+end
+
 vim.keymap.set("n", "<leader>fE", function()
   Snacks.picker.explorer()
 end, { desc = "Explorer" })
+
 vim.keymap.set("n", "<leader>fg", function()
   Snacks.picker.git_files()
 end, { desc = "Find Git Files" })
+
 vim.keymap.set("n", "<leader>fr", function()
   Snacks.picker.recent()
 end, { desc = "Recent" })
+
 vim.keymap.set("n", "<leader>gl", function()
   Snacks.picker.git_log()
 end, { desc = "Git Log" })
+
 vim.keymap.set("n", "<leader>gs", function()
   Snacks.picker.git_status()
 end, { desc = "Git Status" })
+
 vim.keymap.set("n", "<leader>sb", function()
   Snacks.picker.lines()
 end, { desc = "Buffer Lines" })
+
 vim.keymap.set("n", "<leader>sB", function()
   Snacks.picker.grep_buffers()
 end, { desc = "Grep Open Buffers" })
+
 vim.keymap.set({ "n", "x" }, "<leader>sw", function()
   Snacks.picker.grep_word()
 end, { desc = "Visual selection or word" })
+
 vim.keymap.set("n", '<leader>s"', function()
   Snacks.picker.registers()
 end, { desc = "Registers" })
+
 vim.keymap.set("n", "<leader>s:", function()
   Snacks.picker.command_history()
 end, { desc = "Command History" })
+
 vim.keymap.set("n", "<leader>sd", function()
   Snacks.picker.diagnostics()
 end, { desc = "Diagnostics" })
+
 vim.keymap.set("n", "<leader>sj", function()
   Snacks.picker.jumps()
 end, { desc = "Jumps" })
+
 vim.keymap.set("n", "<leader>sl", function()
   Snacks.picker.loclist()
 end, { desc = "Location List" })
+
 vim.keymap.set("n", "<leader>sn", function()
   Snacks.picker.notifications()
 end, { desc = "Notifications" })
+
 vim.keymap.set("n", "<leader>sm", function()
   Snacks.picker.marks()
 end, { desc = "Marks" })
+
 vim.keymap.set("n", "<leader>sR", function()
   Snacks.picker.resume()
 end, { desc = "Resume" })
+
 vim.keymap.set("n", "<leader>sq", function()
   Snacks.picker.qflist()
 end, { desc = "Quickfix List" })
+
 vim.keymap.set("n", "<leader>su", function()
   Snacks.picker.undo()
 end, { desc = "Undo tree" })
+
 vim.keymap.set("n", "<leader>sz", function()
   Snacks.picker.zoxide()
 end, { desc = "Zoxide" })
+
 vim.keymap.set("n", "<leader>hp", function()
   Snacks.picker.pickers()
 end, { desc = "Pickers" })
+
 vim.keymap.set("n", "<leader>hk", function()
   Snacks.picker.keymaps()
 end, { desc = "Keymaps" })
+
 vim.keymap.set("n", "<leader>ht", function()
   Snacks.picker.colorschemes()
 end, { desc = "Colorschemes" })
@@ -245,51 +275,67 @@ vim.keymap.set("n", "<leader>hT", function()
     end,
   })
 end, {})
+
 vim.keymap.set("n", "<leader>ha", function()
   Snacks.picker.autocmds()
 end, { desc = "Autocmds" })
+
 vim.keymap.set("n", "<leader>hh", function()
   Snacks.picker.help()
 end, { desc = "Help Pages" })
+
 vim.keymap.set("n", "<leader>hH", function()
   Snacks.picker.highlights()
 end, { desc = "Highlights" })
+
 vim.keymap.set("n", "<leader>hi", function()
   Snacks.picker.icons()
 end, { desc = "Icons" })
+
 vim.keymap.set("n", "<leader>hc", function()
   Snacks.picker.commands()
 end, { desc = "Commands" })
+
 vim.keymap.set("n", "<leader>hl", function()
   Snacks.picker.lazy()
 end, { desc = "Lazy" })
+
 vim.keymap.set("n", "<leader>:", function()
   Snacks.picker.commands()
 end, { desc = "Commands" })
+
 vim.keymap.set("n", "<leader>hM", function()
   Snacks.picker.man()
 end, { desc = "Man Pages" })
+
 vim.keymap.set("n", "<leader>sQ", function()
   Snacks.picker.grep({ cwd = "~/.config/nvim/after/queries/" })
 end, {})
+
 vim.keymap.set("n", "<leader>yy", function()
   Snacks.picker.files({ cwd = "~/.config/nvim/luasnippets/" })
 end, {})
+
 vim.keymap.set("n", "<leader>yg", function()
   Snacks.picker.grep({ cwd = "~/.config/nvim/luasnippets/" })
 end, {})
+
 vim.keymap.set("n", "gd", function()
   Snacks.picker.lsp_definitions()
 end, { desc = "Goto Definition" })
+
 vim.keymap.set("n", "gR", function()
   Snacks.picker.lsp_references()
 end, { desc = "References", nowait = true })
+
 vim.keymap.set("n", "gI", function()
   Snacks.picker.lsp_implementations()
 end, { desc = "Goto Implementation" })
+
 vim.keymap.set("n", "gy", function()
   Snacks.picker.lsp_type_definitions()
 end, { desc = "Goto T[y]pe Definition" })
+
 vim.keymap.set("n", "<leader>a", function()
   local cur_cursor = vim.api.nvim_win_get_cursor(0)
   local picker = Snacks.picker.lsp_symbols({

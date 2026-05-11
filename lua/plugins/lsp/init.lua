@@ -1,8 +1,18 @@
 vim.pack.add({
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/mason-org/mason.nvim",
+  "https://github.com/smjonas/inc-rename.nvim",
+  "https://github.com/Bilal2453/luvit-meta",
+  "https://github.com/mason-org/mason-lspconfig.nvim",
 })
-require("plugins.lsp.dependencies")
+
+require("inc_rename").setup({})
+
+require("mason-lspconfig").setup({
+  automatic_enable = false,
+  automatic_installation = true,
+})
 
 vim.keymap.set("n", "<leader>M", "<cmd>Mason<cr>", { desc = "Mason" })
 

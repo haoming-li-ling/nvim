@@ -37,7 +37,11 @@ M.whichkey_to_lazy = function(key_table)
   return wk_to_lazy_helper(key_table, "")
 end
 
-M.meth_f = function(object, method)
+---@generic T, R
+---@param object T
+---@param method string
+---@return fun(...: any): R
+M.dot = function(object, method)
   return function(...)
     return object[method](object, ...)
   end
